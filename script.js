@@ -1,17 +1,25 @@
-// 'use strict';
- 
-window.addEventListener('keydown', function(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    console.log(audio);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    console.log(key)
-    // console.log("Sound does not exists")
+function playSound(keyCode) {
+    const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${keyCode}"]`);
     if (!audio) return;
-    // console.log("Sound exists")
-    audio.currentTime = 0; // rewind to the start of audio
+    audio.currentTime = 0; 
     audio.play();
-    key.classList.add(`playing${e.keyCode}`)
-    this.setTimeout(function() {
-        key.classList.remove(`playing${e.keyCode}`)
+    key.classList.add(`playing${keyCode}`);
+    setTimeout(function() {
+        key.classList.remove(`playing${keyCode}`);
     }, 200);
+}
+
+
+window.addEventListener('keydown', function(e) {
+    playSound(e.keyCode);
+});
+
+
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => {
+    key.addEventListener('click', function() {
+        const keyCode = this.getAttribute('data-key');
+        playSound(keyCode);
+    });
 });
