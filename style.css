@@ -92,3 +92,48 @@ html {
     letter-spacing: .1rem;
     color: #dd78de;
   }
+
+  /* Responsive adjustments */
+@media (max-width: 1024px) {
+  .keys {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .keys {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .key {
+    margin: 0.5rem;
+    padding: 0.5rem 0.25rem;
+  }
+
+  kbd {
+    font-size: 3rem;
+  }
+
+  .sound {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .keys {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .key {
+    margin: 0.25rem;
+    padding: 0.25rem 0.125rem;
+  }
+
+  kbd {
+    font-size: 2.5rem;
+  }
+
+  .sound {
+    font-size: 0.8rem;
+  }
+}
